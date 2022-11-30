@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {chatSchema} = require('./chat.model')
+const {msgSchema} = require('./msg.model')
 
 const roomSchema = new mongoose.Schema({
     name : {
@@ -13,7 +13,7 @@ const roomSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    messages : [chatSchema],
+    messages : [msgSchema],
     isActive : {
         type: Boolean,
         default: true

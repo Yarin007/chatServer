@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const chatSchema = new mongoose.Schema({
+const msgSchema = new mongoose.Schema({
     user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'user'
@@ -30,5 +30,5 @@ const chatSchema = new mongoose.Schema({
     }
 })
 
-const chatData = mongoose.model('chat', chatSchema);
-module.exports = { chatData, chatSchema };
+const msgData = mongoose.model('msg', msgSchema);
+module.exports = {  msgData,  msgSchema };

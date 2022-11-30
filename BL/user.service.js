@@ -1,25 +1,36 @@
-require('dotenv').config()
-require('../DL/db').connect()
-
 const userDL = require('../DL/user.controller')
 
 async function createNewUser(data) {
     // validation fields
-    if (!data.fullName || !data.email || !data.password) throw "missing data"
-    
+    if (!data.fName || !data.lName || !data.displayName || !data.email || !data.password) throw "missing data"
+
     // if user is exist
-    let user = await userDL.read({email:data.email})
-    if(user[0]) throw 'user is exist'
+    let user = await userDL.read({ email: data.email })
+    if (user[0]) throw 'user is exist'
 
-    console.log(await userDL.create(data))
+    return await userDL.create(data)
 }
-
-let newUser = {
-    fullName: 'liron haim',
-    // email: 'Avi@Levi.com',
-    email: 'liron@gmail.com',
-    password: '98372jhxz',
-
-}
-
-createNewUser(newUser)
+module.exports={createNewUser}
+let newUsers = [
+    {
+        fName: 'liron',
+        lName: 'haim',
+        displayName: 'Lh',
+        email: 'liron@gmail.com',
+        password: '98372jhxz',
+    },
+    {
+        fName: 'aviad',
+        lName: 'basmah',
+        displayName: 'Ab',
+        email: 'aviad123@gmail.com',
+        password: '98372jhxz',
+    },
+    {
+        fName: 'israel',
+        lName: 'israeli',
+        displayName: 'Ii',
+        email: 'Ii@gmail.com',
+        password: 'QW1232ew',
+    }
+]
